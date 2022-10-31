@@ -14,6 +14,11 @@ To install a specific version, use this command, where the `v1.0.0` is one of th
 pip install git+https://github.com/H2020-IPM-Decisions/WeatherData.git@v1.0.0
 ```
 
+To add this to requirements.txt, simply add this line:
+```bash
+git+https://github.com/H2020-IPM-Decisions/WeatherData.git@v1.0.0
+```
+
 ## How to build a PyPi package
 We used [these instructions](https://spike.sh/blog/how-to-create-a-pip-package-for-python/)
 
