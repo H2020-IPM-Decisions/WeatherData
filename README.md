@@ -1,5 +1,5 @@
-# WeatherData
-This is a module that can be used for Python scripts and applications working with weather data in the IPM Decisions format
+# ipmd_weatherdata
+This is a module that can be used for Python scripts and applications working with weather data in the [IPM Decisions format](https://github.com/H2020-IPM-Decisions/WeatherService/blob/develop/docs/weather_service.md)
 
 ## How to install this package
 To install the latest stable version, use this command
@@ -17,6 +17,30 @@ pip install git+https://github.com/H2020-IPM-Decisions/WeatherData.git@v1.0.0
 To add this to requirements.txt, simply add this line:
 ```bash
 git+https://github.com/H2020-IPM-Decisions/WeatherData.git@v1.0.0
+```
+
+## Usage
+```python
+
+# Util methods
+import ipmd_weatherdata as weatherdata
+# The class representing the data
+from ipmd_weatherdata import WeatherData
+
+# Initialize the WeatherData object
+wd_file = open("../data_files/2021_apelsvoll_redigert.json")
+weather_data = WeatherData(**json.load(wd_file))
+wd_file.close()
+
+# Filter by period
+time_start = "2021-01-01"
+time_end = "2021-02-01"
+weather_data = weatherdata.filter_period(weather_data,time_start,time_end)
+
+# Filter by parameters
+parameters = [1002,2001]
+weather_data = weatherdata.filter_params(weather_data, parameters)
+
 ```
 
 ## How to build a PyPi package
