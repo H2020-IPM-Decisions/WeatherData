@@ -8,24 +8,20 @@ To install the latest stable version, use this command
 pip install git+https://github.com/H2020-IPM-Decisions/WeatherData.git@main
 ```
 
-To install a specific version, use this command, where the `v1.0.0` is one of the available tags
+To install a specific version, use this command, where the `v1.3.0` is one of the available tags
 
 ```bash
-pip install git+https://github.com/H2020-IPM-Decisions/WeatherData.git@v1.0.0
+pip install git+https://github.com/H2020-IPM-Decisions/WeatherData.git@v1.3.0
 ```
 
 To add this to requirements.txt, simply add this line:
 ```bash
-git+https://github.com/H2020-IPM-Decisions/WeatherData.git@v1.0.0
+git+https://github.com/H2020-IPM-Decisions/WeatherData.git@v1.3.0
 ```
 
 ## Usage
 ```python
-
-# Util methods
-import ipmd_weatherdata as weatherdata
-# The class representing the data
-from ipmd_weatherdata import WeatherData
+from ipmd_weatherdata import WeatherData, weatherdata_utils
 
 # Initialize the WeatherData object
 wd_file = open("../data_files/2021_apelsvoll_redigert.json")
@@ -35,16 +31,21 @@ wd_file.close()
 # Filter by period
 time_start = "2021-01-01"
 time_end = "2021-02-01"
-weather_data = weatherdata.filter_period(weather_data,time_start,time_end)
+weather_data = weatherdata_utils.filter_period(weather_data,time_start,time_end)
 
 # Filter by parameters
 parameters = [1002,2001]
-weather_data = weatherdata.filter_params(weather_data, parameters)
+weather_data = weatherdata_utils.filter_params(weather_data, parameters)
 
 ```
 
-## How to build a PyPi package
+## How to create a PyPi package
 We used [these instructions](https://spike.sh/blog/how-to-create-a-pip-package-for-python/)
+
+Build command:
+```bash
+$ python3 -m build
+```
 
 In addition: How to tag a commit in a branch:
 ```bash 
